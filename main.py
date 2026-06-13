@@ -4,7 +4,7 @@ from discord.ext import commands
 from discord.ui import View, Select
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-GUILD_ID = 1446561927265521707
+
 VERIFY_CHANNEL_ID = 1505853378704445552
 
 VERIFIED_ROLE = 1515064961536360654
@@ -30,12 +30,12 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 class GenderSelect(Select):
     def __init__(self):
         options = [
-            discord.SelectOption(label="Male"),
-            discord.SelectOption(label="Female")
+            discord.SelectOption(label="Male", emoji="👨"),
+            discord.SelectOption(label="Female", emoji="👩")
         ]
 
         super().__init__(
-            placeholder="Select Gender",
+            placeholder="👤 Select Gender",
             min_values=1,
             max_values=1,
             options=options
@@ -63,12 +63,12 @@ class GenderSelect(Select):
 class AgeSelect(Select):
     def __init__(self):
         options = [
-            discord.SelectOption(label="18+"),
-            discord.SelectOption(label="18-")
+            discord.SelectOption(label="18+", emoji="🔞"),
+            discord.SelectOption(label="18-", emoji="🧒")
         ]
 
         super().__init__(
-            placeholder="Select Age",
+            placeholder="🎂 Select Age",
             min_values=1,
             max_values=1,
             options=options
@@ -96,14 +96,14 @@ class AgeSelect(Select):
 class GamesSelect(Select):
     def __init__(self):
         options = [
-            discord.SelectOption(label="Free Fire"),
-            discord.SelectOption(label="BGMI"),
-            discord.SelectOption(label="GTA V"),
-            discord.SelectOption(label="Roblox")
+            discord.SelectOption(label="Free Fire", emoji="🔥"),
+            discord.SelectOption(label="BGMI", emoji="🏆"),
+            discord.SelectOption(label="GTA V", emoji="🚗"),
+            discord.SelectOption(label="Roblox", emoji="🎮")
         ]
 
         super().__init__(
-            placeholder="Select Games",
+            placeholder="🎮 Select Games",
             min_values=1,
             max_values=4,
             options=options
@@ -138,7 +138,7 @@ class GamesSelect(Select):
             await member.add_roles(role)
 
         await interaction.response.send_message(
-            "✅ Verification completed!",
+            "🎉 Verification completed successfully!",
             ephemeral=True
         )
 
@@ -160,42 +160,36 @@ async def on_ready():
 
     if channel:
         embed = discord.Embed(
-    title="✨ MENTALISM VERIFICATION ✨",
-    description=(
-        "━━━━━━━━━━━━━━━━━━\n\n"
-        "🔐 Complete verification to unlock the server.\n\n"
-        "👤 **Gender**\n"
-        "• Male\n"
-        "• Female\n\n"
-        "🎂 **Age**\n"
-        "• 18+\n"
-        "• 18-\n\n"
-        "🎮 **Games**\n"
-        "• 🔥 Free Fire\n"
-        "• 🏆 BGMI\n"
-        "• 🚗 GTA V\n"
-        "• 🧱 Roblox\n\n"
-        "━━━━━━━━━━━━━━━━━━\n\n"
-        "✅ Receive your roles automatically\n"
-        "💬 Unlock community channels\n"
-        "🎯 Access game-specific chats"
-    ),
-    color=discord.Color.purple()
-)
-embed.set_image(
-    url="YOUR_BANNER_IMAGE_URL"
-)
-embed.set_image(
-    url="https://your-image-link-here.png"
-)
+            title="✨ MENTALISM VERIFICATION ✨",
+            description=(
+                "━━━━━━━━━━━━━━━━━━\n\n"
+                "🔐 Complete verification to unlock the server.\n\n"
+                "👤 **Gender**\n"
+                "• Male\n"
+                "• Female\n\n"
+                "🎂 **Age**\n"
+                "• 18+\n"
+                "• 18-\n\n"
+                "🎮 **Games**\n"
+                "• 🔥 Free Fire\n"
+                "• 🏆 BGMI\n"
+                "• 🚗 GTA V\n"
+                "• 🎮 Roblox\n\n"
+                "━━━━━━━━━━━━━━━━━━\n\n"
+                "✅ Receive your roles automatically\n"
+                "💬 Unlock community channels\n"
+                "🎯 Access game-specific chats"
+            ),
+            color=discord.Color.purple()
+        )
 
-embed.set_thumbnail(
-    url="https://cdn.discordapp.com/embed/avatars/0.png"
-)
+        embed.set_thumbnail(
+            url="https://cdn.discordapp.com/embed/avatars/0.png"
+        )
 
-embed.set_footer(
-    text="Mentalism Community • Verify to Begin"
-)
+        embed.set_footer(
+            text="Mentalism ✨ • Gaming Community"
+        )
 
         await channel.purge(limit=10)
 
