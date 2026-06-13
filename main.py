@@ -26,3 +26,56 @@ intents.members = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 user_data = {}
+
+class AgeSelect(discord.ui.Select):
+    def __init__(self):
+        options = [
+            discord.SelectOption(label="18+", value="18+"),
+            discord.SelectOption(label="18-", value="18-")
+        ]
+        super().__init__(
+            placeholder="Select your age group",
+            min_values=1,
+            max_values=1,
+            options=options
+        )
+
+    async def callback(self, interaction: discord.Interaction):
+        user_data[interaction.user.id] = {"age": self.values[0]}
+        await interaction.response.send_message(
+            view=GenderView(),
+            ephemeral=True
+        )
+
+
+class AgeView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=300)
+        self.add_item(AgeSelect())
+
+
+class GenderSelect(discord.ui.Select):
+    def __init__(self):
+        options = [
+            discord.SelectOption(label="Male", value="Male"),
+            discord.SelectOption(label="Female", value="Female")
+        ]
+        super().__init__(
+            placeholder="Select your gender",
+            min_values=1,
+            max_values=1,
+            options=options
+        )
+
+    async def callback(self, interaction: discord.Interaction):
+        user_data[interaction.user.id]["gender"] = self.values[0]
+        await interaction.response.send_message(
+            view=GamesView(),
+            ephemeral=True
+        )
+
+
+class GenderView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=300)
+        self.add_item(GenderSelect())
