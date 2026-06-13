@@ -160,13 +160,42 @@ async def on_ready():
 
     if channel:
         embed = discord.Embed(
-            title="🎉 Server Verification",
-            description=(
-                "Select your Gender, Age and Games.\n\n"
-                "You will automatically receive roles."
-            ),
-            color=discord.Color.blue()
-        )
+    title="✨ MENTALISM VERIFICATION ✨",
+    description=(
+        "━━━━━━━━━━━━━━━━━━\n\n"
+        "🔐 Complete verification to unlock the server.\n\n"
+        "👤 **Gender**\n"
+        "• Male\n"
+        "• Female\n\n"
+        "🎂 **Age**\n"
+        "• 18+\n"
+        "• 18-\n\n"
+        "🎮 **Games**\n"
+        "• 🔥 Free Fire\n"
+        "• 🏆 BGMI\n"
+        "• 🚗 GTA V\n"
+        "• 🧱 Roblox\n\n"
+        "━━━━━━━━━━━━━━━━━━\n\n"
+        "✅ Receive your roles automatically\n"
+        "💬 Unlock community channels\n"
+        "🎯 Access game-specific chats"
+    ),
+    color=discord.Color.purple()
+)
+embed.set_image(
+    url="YOUR_BANNER_IMAGE_URL"
+)
+embed.set_image(
+    url="https://your-image-link-here.png"
+)
+
+embed.set_thumbnail(
+    url="https://cdn.discordapp.com/embed/avatars/0.png"
+)
+
+embed.set_footer(
+    text="Mentalism Community • Verify to Begin"
+)
 
         await channel.purge(limit=10)
 
